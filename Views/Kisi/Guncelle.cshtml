@@ -1,0 +1,54 @@
+﻿@model EgitimPortal.Models.Kisi
+@using EgitimPortal.Models
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+<h2>Index</h2>
+<form action="/Kisi/Guncelle" method="post">
+    <input type="hidden" name="ID" value="@Model.ID" />
+    <div class="row">
+
+        <div class="col-md-2">
+            <label>Adı</label>
+            <input class="form-control" value="@Model.Ad" type="text" name="Adi" />
+        </div>
+
+        <div class="col-md-2">
+            <label>Soyadı</label>
+            <input class="form-control" value="@Model.Soyad" type="text" name="Soyadi" />
+        </div>
+        <div class="col-md-2">
+            <label>E-Posta</label>
+            <input class="form-control" type="text" name="Eposta" />
+        </div>
+        <div class="col-md-2">
+            <label>Doğum Tarihi</label>
+            <input class="form-control" value="@Model.DogumTarihi.ToString("yyyy-MM-dd")" type="date" name="Tarih" />
+        </div>
+
+        <div class="col-md-2">
+            <label>Şifre</label>
+            <input class="form-control" value="@Model.Sifre" type="password" name="Sifre" />
+        </div>
+        <div class="col-md-1">
+            <br />
+            <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
+        </div>
+        <div class="col-md-1">
+            <br />
+            <a class="form-control btn btn-danger" href="/Kisi/Ekle">Vazgeç</a>
+        </div>
+    </div>
+
+
+</form>
+<br />
+
+
+

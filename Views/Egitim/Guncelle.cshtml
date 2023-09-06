@@ -1,0 +1,60 @@
+﻿@model dynamic
+@using EgitimPortal.Models
+@{
+    ViewBag.Title = "Guncelle";
+}
+
+<h2>Guncelle</h2>
+<form action="/Egitim/Guncelle" method="post">
+    <input type="hidden" name="ID" value="@Model.Egitim.ID" />
+    <div class="row">
+        <div class="col-md-2">
+            <label>Adı</label>
+            <input class="form-control" value="@Model.Egitim.EgitimAdi" type="text" name="EgitimAdi" />
+        </div>
+
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <label>Başlangıç</label>
+                    <input class="form-control" value="@Model.Egitim.BaslangicTarihi.ToString("yyyy-MM-dd")" type="date" name="BasTarih" />
+                </div>
+                <div class="col-md-6">
+                    <label>Bitiş</label>
+                    <input class="form-control" value="@Model.Egitim.BitisTarihi.ToString("yyyy-MM-dd")" type="date" name="BitTarih" />
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+            <label>Fiyat</label>
+            <input class="form-control" value="@Model.Egitim.Fiyat" type="text name="Fiyat" />
+        </div>
+        <div class="col-md-1">
+            <label>Gün Sayısı</label>
+            <input class="form-control" value="@Model.Egitim.GunSayisi" type="number" name="GunSayisi" />
+        </div>
+        <div class="col-md-1">
+            <label>Kontenjan</label>
+            <input class="form-control" value="@Model.Egitim.Kontenjan" type="number" name="Kontenjan" />
+        </div>
+        <div class="col-md-2">
+            <label>Kategori</label>
+            <select class="form-control" id="Kategori" name="Kategori">
+                @foreach (Kategori kategori in @Model.Kategoriler)
+                {
+                    <option value="@kategori.ID">@kategori.KategoriAdi</option>
+                }
+            </select>
+
+        </div>
+        <div class="col-md-1">
+            <br />
+            <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
+        </div>
+    </div><br />
+
+</form>
+

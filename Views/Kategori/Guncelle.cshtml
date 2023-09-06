@@ -1,0 +1,43 @@
+﻿@model EgitimPortal.Models.Kategori
+@using EgitimPortal.Models
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+
+
+<div>
+    <h2>Kategoriler</h2>
+    
+    <form action="/Kategori/Guncelle" method="post">
+        <input type="hidden" name="ID" value="@Model.ID" />
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-2">
+                <label>Kategori Adı</label>
+                <input class="form-control" type="text" value="@Model.KategoriAdi" name="KategoriAdi" />
+            </div>
+            <div class="col-md-1">
+                <br />
+                <input class="form-control btn btn-primary" type="submit" value="Guncelle" />
+            </div>
+          
+            <div class="col-md-1">
+                <br />
+                <a class="form-control btn btn-danger" href="/Kategori/Ekle">Vazgeç</a>
+            </div>
+        </div> <br />
+
+    </form>
+
+
+</div>
+
+

@@ -1,0 +1,72 @@
+﻿@model IEnumerable<EgitimPortal.Models.Kategori>
+@using EgitimPortal.Models
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table, th, td {
+        border: 1px solid black;
+        text-align:center;
+    }
+</style>
+<script type="text/javascript">
+    $('.sil').click(function (e) {
+        return confirm("Silmek istediğinize emin misiniz?")
+    });
+</script>
+
+<div>
+    <h2>Kategoriler</h2>
+    <form action="/Kategori/Ekle" method="post">
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-2">
+                <label>Kategori Adı</label>
+                <input class="form-control" type="text" name="KategoriAdi" />
+            </div>
+            <div class="col-md-2">
+                <br />
+                <input class="form-control btn btn-primary" type="submit" value="Ekle" />
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div> <br/>
+       
+    </form>
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <table style="width:100%">
+                <thead>
+                    <tr>
+                        <td>Ad</td>
+                        <td>İşlem</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Kategori kategori in @Model)
+                    {
+                        <tr>
+                            <td>@kategori.KategoriAdi</td>
+                           
+                            <td>
+                                <a class="btn btn-success" href="/Kategori/Guncelle/@kategori.ID">Güncelle</a>
+                                <a class="btn btn-danger sil" href="/Kategori/Sil/@kategori.ID">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+    
+</div>
+

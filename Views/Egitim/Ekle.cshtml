@@ -1,0 +1,108 @@
+﻿
+@model dynamic
+@using EgitimPortal.Models
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+<h2>Eğitimler</h2>
+<form action="/Egitim/Ekle" method="post">
+    <div class="row">
+        <div class="col-md-2">
+            <label>Adı</label>
+            <input class="form-control" type="text" name="EgitimAdi" />
+        </div>
+
+        <div class="col-md-3">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <label>Başlangıç</label>
+                    <input class="form-control" type="date" name="BasTarih" />
+                </div>
+                <div class="col-md-6">
+                    <label>Bitiş</label>
+                    <input class="form-control" type="date" name="BitTarih" />
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-2">
+            <label>Fiyat</label>
+            <input class="form-control" type="text" name="Fiyat" />
+        </div>
+        <div class="col-md-1">
+            <label>Gün Sayısı</label>
+            <input class="form-control" type="number" name="GunSayisi" />
+        </div>
+        <div class="col-md-1">
+            <label>Kontenjan</label>
+            <input class="form-control" type="number" name="Kontenjan" />
+        </div>
+        <div class="col-md-2">
+            <label>Kategori</label>
+            <select class="form-control" id="Kategori" name="Kategori">
+                @foreach (Kategori kategori in @Model.Kategoriler)
+                {
+                    <option value="@kategori.ID">@kategori.KategoriAdi</option>
+                }
+            </select>
+
+        </div>
+        <div class="col-md-1">
+            <br />
+            <input class="form-control btn btn-primary" type="submit" value="Ekle" />
+        </div>
+    </div><br/>
+   
+</form>
+<div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <td>Eğitim Adı</td>
+                    <td>Kategori</td>
+                    <td>Başlangıç Tarihi</td>
+                    <td>Bitiş Tarihi</td>
+                    <td>Fiyat</td>
+                    <td>Gün Sayısı</td>
+                    <td>Kontenjan</td>
+                    <td>İşlem</td>
+                </tr>
+               
+            </thead>
+            <tbody>
+                @foreach (EgitimView egitim in @Model.Egitim)
+                {
+                    <tr>
+                        <td>@egitim.EgitimAdi</td>
+                        <td>@egitim.KategoriAdi</td>
+                        <td>@egitim.BaslangicTarihi.ToShortDateString()</td>
+                        <td>@egitim.BitisTarihi.ToShortDateString()</td>
+                        <td>@egitim.Fiyat</td>
+                        <td>@egitim.GunSayisi</td>
+                        <td>@egitim.Kontenjan</td>
+                        <td>
+                            <a class="btn btn-success" href="/Egitim/Guncelle/@egitim.ID">Güncelle</a>
+                            <a class="btn btn-danger" href="/Egitim/Sil/@egitim.ID">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2">
+
+    </div>
+</div>
+

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<EgitimPortal.Models.Egitmen>
+@using EgitimPortal.Models
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+<h2>Index</h2>
+<form action="/Egitmen/Ekle" method="post">
+    <div class="row">
+
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <label>Adı</label>
+            <input class="form-control" type="text" name="Adi" />
+        </div>
+
+        <div class="col-md-3">
+            <label>Soyadı</label>
+            <input class="form-control" type="text" name="Soyadi" />
+        </div>
+        <div class="col-md-3">
+            <label>Doğum Tarihi</label>
+            <input class="form-control" type="date" name="Tarih" />
+        </div>
+        <div class="col-md-1">
+            <br />
+            <input class="form-control btn btn-primary" type="submit" value="Ekle" />
+        </div>
+
+    </div>
+
+</form>
+<br />
+<div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-4">
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <td>Ad</td>
+                    <td>Soyad</td>
+                    <td>Doğum Tarihi</td>
+                    <td>İşlem</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Egitmen egitmen in @Model)
+                {
+                    <tr>
+                        <td>@egitmen.Ad</td>
+                        <td>@egitmen.Soyad</td>
+                        <td>@egitmen.DogumTarihi.ToShortDateString()</td>
+                        <td>
+                            <a class="btn btn-success" href="/Egitmen/Guncelle/@egitmen.ID">Güncelle</a>
+                            <a class="btn btn-danger" href="/Egitmen/Sil/@egitmen.ID">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
+

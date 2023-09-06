@@ -1,0 +1,34 @@
+﻿@model EgitimPortal.Models.Egitmen
+@using EgitimPortal.Models
+
+@{
+    ViewBag.Title = "Guncelle";
+}
+
+<h2>Guncelle</h2>
+<form action="/Egitmen/Guncelle" method="post">
+    <input type="hidden" name="ID" value="@Model.ID" />
+    <div class="row">
+
+        <div class="col-md-1"></div>
+        <div class="col-md-3">
+            <label>Adı</label>
+            <input class="form-control" type="text" value="@Model.Ad" name="Adi" />
+        </div>
+
+        <div class="col-md-3">
+            <label>Soyadı</label>
+            <input class="form-control" type="text" value="@Model.Soyad" name="Soyadi" />
+        </div>
+        <div class="col-md-3">
+            <label>Doğum Tarihi</label>
+            <input class="form-control" type="date" value="@Model.DogumTarihi" name="Tarih" />
+        </div>
+        <div class="col-md-1">
+            <br />
+            <input class="form-control btn btn-primary" type="submit" value="Güncelle" />
+        </div>
+
+    </div>
+
+</form>

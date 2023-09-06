@@ -1,0 +1,81 @@
+﻿@model IEnumerable<EgitimPortal.Models.Kisi>
+@using EgitimPortal.Models
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+<h2>Index</h2>
+<form action="/Kisi/Ekle" method="post">
+    <div class="row">
+        <div class="col-md-2">
+            <label>Adı</label>
+            <input class="form-control" type="text" name="Adi" />
+        </div>
+
+        <div class="col-md-2">
+            <label>Soyadı</label>
+            <input class="form-control" type="text" name="Soyadi" />
+        </div>
+        <div class="col-md-2">
+            <label>E-Posta</label>
+            <input class="form-control" type="text" name="Eposta" />
+        </div>
+        <div class="col-md-2">
+            <label>Doğum Tarihi</label>
+            <input class="form-control" type="date" name="Tarih" />
+        </div>
+        <div class="col-md-2">
+            <label>Şifre</label>
+            <input class="form-control" type="password" name="Sifre" />
+        </div>
+        <div class="col-md-2">
+            <br />
+            <input class="form-control btn btn-primary" type="submit" value="Ekle" />
+        </div>
+    </div>
+
+       
+</form><br />
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-6">
+        <table style="width:100%">
+            <thead>
+                <tr>
+                    <td>Ad</td>
+                    <td>Soyad</td>
+                    <td>E-Posta</td>
+                    <td>Doğum Tarihi</td>
+                    <td>İşlem</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Kisi kisi in @Model)
+                {
+                    <tr>
+                        <td>@kisi.Ad</td>
+                        <td>@kisi.Soyad</td>
+                        <td>@kisi.EPosta</td>
+                        <td>@kisi.DogumTarihi.ToShortDateString()</td>
+                        <td>
+                            <a class="btn btn-success" href="/Kisi/Guncelle/@kisi.ID">Güncelle</a>
+                            <a class="btn btn-danger" href="/Kisi/Sil/@kisi.ID">Sil</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+
+

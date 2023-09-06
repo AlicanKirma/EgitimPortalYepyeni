@@ -1,0 +1,79 @@
+﻿@model dynamic
+@using EgitimPortal.Models
+@{
+    ViewBag.Title = "Ekle";
+}
+
+<h2>Ekle</h2>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+</style>
+<form action="/EgitimEgitmen/Ekle" method="post">
+    <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-3">
+            <label>Egitmen</label>
+            <select class="form-control" id="Egitim" name="Egitim">
+                @foreach (Egitim egitim in @Model.Egitimler)
+                {
+                    <option value="@egitim.ID">@egitim.EgitimAdi</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label>Egitmen</label>
+            <select class="form-control" id="Egitmen" name="Egitmen">
+                @foreach (Egitmen egitmen in @Model.Egitmenler)
+                {
+                    <option value="@egitmen.ID">@egitmen.Ad</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-1">
+            <br />
+            <input class="form-control btn btn-primary" type="submit" value="Ekle" />
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div> <br />
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <table style="width:100%">
+                <thead>
+                    <tr>
+                        <td>Eğitim Adı</td>
+                        <td>Eğitmen Adı</td>
+
+                    </tr>
+
+                </thead>
+                <tbody>
+                    @foreach (EgitimEgitmenView egitim in @Model.Liste)
+                    {
+                        <tr>
+                            <td>@egitim.EgitimAdi</td>
+                            <td>@egitim.EgitmenAdi</td>
+
+                            <td>
+
+                                <a class="btn btn-danger" href="/Egitim/Sil/@egitim.ID">Sil</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</form>
